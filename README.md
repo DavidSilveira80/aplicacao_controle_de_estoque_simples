@@ -17,3 +17,7 @@ os dados em um arquivo para que as informações não sejam perdidas quando o pr
      (nome, quantidade, etc.)
  - [X] Atualizar Quantidade: Uma função para atualizar a quantidade de um produto existente no estoque, aumentando 
       ou diminuindo seu valor conforme necessário.
+
+## Próximos passos
+  - [] Estrutura do sistema
+  - [] Interface de usuário via terminal
