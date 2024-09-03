@@ -12,7 +12,7 @@ os dados em um arquivo para que as informações não sejam perdidas quando o pr
 
  - [X] Adicionar Produto: Uma função para adicionar um novo produto ao estoque, fornecendo detalhes como nome e 
    quantidade.
- - [] Remover Produto: Uma função para remover um produto existente do estoque, identificando-o por seu código ou nome.
+ - [X] Remover Produto: Uma função para remover um produto existente do estoque, identificando-o por seu código ou nome.
  - [X] Listar Produtos: Uma função para listar todos os produtos no estoque, exibindo suas propriedades 
      (nome, quantidade, etc.)
  - [] Atualizar Quantidade: Uma função para atualizar a quantidade de um produto existente no estoque, aumentando 
