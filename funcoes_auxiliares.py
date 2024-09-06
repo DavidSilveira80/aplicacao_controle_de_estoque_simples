@@ -10,4 +10,4 @@ def operacao_subtracao(a, b):
 # Sistema
 
 def empacota_produto(codigo, nome, quantidade, preco):
-    return [{'codigo': codigo, 'nome_produto': nome, 'quantidade': quantidade, 'preco': preco}]
+    return [{'codigo': codigo, 'nome': nome, 'quantidade': quantidade, 'preco': preco}]

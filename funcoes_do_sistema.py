@@ -7,6 +7,16 @@ caminho = Path(__file__).parent / 'estoque.csv'
 campos = ['codigo', 'nome', 'quantidade', 'preco']
 
 
+def verifica_se_ha_no_estoque(caminho, codigo_produto):
+    produtos = le_arquivo(caminho_arquivo=caminho)
+    resp = False
+    for produto in produtos:
+        if produto['codigo'] == codigo_produto:
+            resp = True
+            break
+    return resp
+
+
 def le_arquivo(caminho_arquivo):
     with open(caminho_arquivo, 'r', newline='') as arquivo:
         leitor = csv.DictReader(arquivo)
@@ -53,10 +63,24 @@ def atualizar_quantidade_produto(codigo_produto, operacao, quantidade, caminho, 
     for produto in produtos:
         if produto['codigo'] == codigo_produto:
             if operacao == '+':
-                nova_quantidade = operacao_soma(int(produto['quantidade']), quantidade)
+                nova_quantidade = operacao_soma(int(produto['quantidade']), int(quantidade))
             elif operacao == '-':
-                nova_quantidade = operacao_subtracao(int(produto['quantidade']), quantidade)
+                nova_quantidade = operacao_subtracao(int(produto['quantidade']), int(quantidade))
             produto['quantidade'] = str(nova_quantidade)
             break
 
     grava_produtos(produtos, caminho, campos)
+
+
+def consultar_produto(caminho):
+    prod = ''
+    cod = input("Informe o código do produto: ")
+    if verifica_se_ha_no_estoque(caminho=caminho, codigo_produto=cod):
+        produtos = le_arquivo(caminho_arquivo=caminho)
+        for produto in produtos:
+            if produto['codigo'] == cod:
+                prod = produto
+                break
+        return prod
+    else:
+        print('Produto não cadastrado')
