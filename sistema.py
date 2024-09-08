@@ -1,7 +1,10 @@
-from funcoes_auxiliares import empacota_produto
 from funcoes_do_sistema import (adicionar_produto, verifica_se_ha_no_estoque, caminho, campos,
                                 listar_produtos, atualizar_quantidade_produto, remover_produto_pelo_codigo,
-                                consultar_produto)
+                                consultar_produto, le_arquivo)
+
+
+def empacota_produto(codigo, nome, quantidade, preco):
+    return [{'codigo': codigo, 'nome': nome, 'quantidade': quantidade, 'preco': preco}]
 
 
 def cadastrar():
@@ -38,7 +41,8 @@ def remover(caminho, campos):
     else:
         print('Produto não cadastrado.')
 
-if __name__=='__main__':
+
+def main():
     parada_principal = 0
     while parada_principal == 0:
         opt1 = int(input('1 - C 2 - L 3 - A 4 - R 5 - CON 6 - S\n-> '))
@@ -49,7 +53,8 @@ if __name__=='__main__':
                 cadastrar()
             case 2:
                 print("Listar Produtos")
-                listar_produtos(caminho_arquivo=caminho)
+                produtos = le_arquivo(caminho_arquivo=caminho)
+                listar_produtos(produtos)
             case 3:
                 print("Atualizar Produto")
                 atualizar_quantidade(caminho=caminho, campos=campos)
@@ -64,3 +69,7 @@ if __name__=='__main__':
                 parada_principal = 1
             case _:
                 print("Valor Inválido")
+
+
+if __name__=='__main__':
+    main()

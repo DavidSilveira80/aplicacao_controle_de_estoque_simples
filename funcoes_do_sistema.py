@@ -1,5 +1,4 @@
 from pathlib import Path
-from funcoes_auxiliares import operacao_soma, operacao_subtracao
 import csv
 
 
@@ -39,9 +38,7 @@ def adicionar_produto(pacote_produto, caminho_arquivo, campos):
             gravador.writerow(produto)
 
 
-def listar_produtos(caminho_arquivo):
-    produtos = le_arquivo(caminho_arquivo)
-
+def listar_produtos(produtos):
     for produto in produtos:
         print(f'Código do produto: {produto["codigo"]} Nome: {produto["nome"]} '
             f'Quantidade: {produto["quantidade"]} Preço unitário: {produto["preco"]}')
@@ -63,9 +60,9 @@ def atualizar_quantidade_produto(codigo_produto, operacao, quantidade, caminho, 
     for produto in produtos:
         if produto['codigo'] == codigo_produto:
             if operacao == '+':
-                nova_quantidade = operacao_soma(int(produto['quantidade']), int(quantidade))
+                nova_quantidade = int(produto['quantidade']) + int(quantidade)
             elif operacao == '-':
-                nova_quantidade = operacao_subtracao(int(produto['quantidade']), int(quantidade))
+                nova_quantidade = int(produto['quantidade']) - int(quantidade)
             produto['quantidade'] = str(nova_quantidade)
             break
 
