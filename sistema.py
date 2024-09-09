@@ -45,7 +45,14 @@ def remover(caminho, campos):
 def main():
     parada_principal = 0
     while parada_principal == 0:
-        opt1 = int(input('1 - C 2 - L 3 - A 4 - R 5 - CON 6 - S\n-> '))
+        print("==========================================")
+        print("          1- Cadastrar\n"
+              "          2- Listas Produtos\n"
+              "          3- Atualizar Quantidade\n"
+              "          4- Remover Produto\n"
+              "          5- Consultar Produto\n"
+              "          6- Sair                         ")
+        opt1 = int(input('-> '))
 
         match opt1:
             case 1:
